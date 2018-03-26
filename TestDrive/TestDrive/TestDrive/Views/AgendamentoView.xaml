@@ -3,11 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TestDrive.Views.AgendamentoView"
              Title="{Binding Veiculo.Nome}">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    <TableView>
+        <TableRoot>
+            <TableSection Title="Seus dados">
+                <EntryCell Label="Nome:"></EntryCell>
+                <EntryCell Label="Email:" Keyboard="Email"></EntryCell>
+                <EntryCell Label="Fone:" Keyboard="Telephone"></EntryCell>
+            </TableSection>
+            <TableSection Title="Agendamento">
+
+            </TableSection>
+        </TableRoot>
+    </TableView>
 </ContentPage>
