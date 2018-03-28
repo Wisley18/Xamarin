@@ -11,7 +11,7 @@ namespace TestDrive.ViewModels
 
         public ListagemViewModel()
         {
-
+            Veiculos = new ListagemVeiculos().Veiculos;
         }
     }
 }
