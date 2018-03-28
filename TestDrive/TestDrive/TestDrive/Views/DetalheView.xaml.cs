@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using TestDrive.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,9 +11,6 @@ namespace TestDrive.Views
 {
 	public partial class DetalheView : ContentPage
 	{
-        private const int FREIO_ABS = 800;
-        private const int AR_CONDICIONADO = 1000;
-        private const int MP3_PLAYER = 500;
 
         public Veiculo Veiculo { get; set; }
 
@@ -21,7 +18,7 @@ namespace TestDrive.Views
         {
             get
             {
-                return string.Format("Freio ABS - R$ {0}", FREIO_ABS);
+                return string.Format("Freio ABS - R$ {0}", Veiculo.FREIO_ABS);
             }
         }
 
@@ -29,7 +26,7 @@ namespace TestDrive.Views
         {
             get
             {
-                return string.Format("Ar Condicionado - R$ {0}", AR_CONDICIONADO);
+                return string.Format("Ar Condicionado - R$ {0}", Veiculo.AR_CONDICIONADO);
             }
         }
 
@@ -37,50 +34,47 @@ namespace TestDrive.Views
         {
             get
             {
-                return string.Format("MP3 Player - R$ {0}", MP3_PLAYER);
+                return string.Format("MP3 Player - R$ {0}", Veiculo.MP3_PLAYER);
             }
         }
 
-        bool temFreioABS;
         public bool TemFreioABS
         {
             get
             {
-                return temFreioABS;
+                return Veiculo.TemFreioABS;
             }
             set
             {
-                temFreioABS = value;
+                Veiculo.TemFreioABS = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(ValorTotal));
             }
         }
 
-        bool temArCondicionado;
         public bool TemArCondicionado
         {
             get
             {
-                return temArCondicionado;
+                return Veiculo.TemArCondicionado;
             }
             set
             {
-                temArCondicionado = value;
+                Veiculo.TemArCondicionado = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(ValorTotal));
             }
         }
 
-        bool temMP3Player;
         public bool TemMP3Player
         {
             get
             {
-                return temMP3Player;
+                return Veiculo.TemMP3Player;
             }
             set
             {
-                temMP3Player = value;
+                Veiculo.TemMP3Player = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(ValorTotal));
             }
@@ -90,10 +84,7 @@ namespace TestDrive.Views
         {
             get
             {
-                return string.Format("Valor Total: R$ {0}", Veiculo.Preco
-                    + (TemFreioABS ? FREIO_ABS : 0)
-                    + (TemArCondicionado ? AR_CONDICIONADO : 0)
-                    + (TemMP3Player ? MP3_PLAYER : 0));
+                return Veiculo.PrecoTotalFormatado;
             }
         }
 
