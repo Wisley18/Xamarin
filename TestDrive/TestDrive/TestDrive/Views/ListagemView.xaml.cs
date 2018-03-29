@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestDrive.Models;
+using TestDrive.ViewModels;
 using Xamarin.Forms;
 
 namespace TestDrive.Views
@@ -11,29 +12,28 @@ namespace TestDrive.Views
 
     public partial class ListagemView : ContentPage
     {
-        
+        public ListagemViewModel ViewModel { get; set; }
 
         public ListagemView()
         {
             InitializeComponent();
+
+            ViewModel = new ListagemViewModel();
+
+            BindingContext = ViewModel;
         }
 
-        //private void ListViewVeiculos_ItemTapped(object sender, ItemTappedEventArgs e)
-        //{
-        //    var veiculo = (Veiculo)e.Item;
-
-        //    Navigation.PushAsync(new  DetalheView(veiculo));
-        //}
-
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
 
-            MessagingCenter.Subscribe<Veiculo>(this, "VeicuoSelecionado",
+            MessagingCenter.Subscribe<Veiculo>(this, "VeiculoSelecionado",
                 (msg) =>
                 {
                     Navigation.PushAsync(new DetalheView(msg));
                 });
+
+            await  ViewModel.GetVeiculos();
         }
 
         protected override void OnDisappearing()
