@@ -18,11 +18,29 @@ namespace TestDrive.Views
             InitializeComponent();
         }
 
-        private void ListViewVeiculos_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            var veiculo = (Veiculo)e.Item;
+        //private void ListViewVeiculos_ItemTapped(object sender, ItemTappedEventArgs e)
+        //{
+        //    var veiculo = (Veiculo)e.Item;
 
-            Navigation.PushAsync(new  DetalheView(veiculo));
+        //    Navigation.PushAsync(new  DetalheView(veiculo));
+        //}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            MessagingCenter.Subscribe<Veiculo>(this, "VeicuoSelecionado",
+                (msg) =>
+                {
+                    Navigation.PushAsync(new DetalheView(msg));
+                });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            MessagingCenter.Unsubscribe<Veiculo>(this, "VeiculoSelecionado");
         }
     }
 }
