@@ -52,6 +52,7 @@ namespace TestDrive.ViewModels
 
         public async Task GetVeiculos()
         {
+            Aguarde = true;
             var client = new HttpClient();
             var resultado = await client.GetStringAsync(URL_GET_VEICULOS);
             var veiculosJson = JsonConvert.DeserializeObject<VeiculoJson[]>(resultado);
@@ -64,6 +65,7 @@ namespace TestDrive.ViewModels
                     Preco = v.preco
                 });
             }
+            Aguarde = false;
         }
     }
 

@@ -95,7 +95,7 @@ namespace TestDrive.ViewModels
             Veiculo = veiculo;
             ProximoCommand = new Command(() =>
             {
-                MessagingCenter.Send(this, "Proximo");
+                MessagingCenter.Send(Veiculo, "Proximo");
             });
         }
     }

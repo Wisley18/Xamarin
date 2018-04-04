@@ -6,9 +6,9 @@
              x:Class="TestDrive.Views.ListagemView"
              Title="Test Drive">
 
-    <StackLayout Margin="25">
+    <StackLayout Margin="15">
         <ActivityIndicator IsRunning="{Binding Aguarde}" IsVisible="{Binding Aguarde}"></ActivityIndicator>
-        <ListView x:Name="ListViewVeiculos" ItemsSource="{Binding Veiculos}" Margin="25" SelectedItem="{Binding VeiculoSelecionado}">
+        <ListView x:Name="ListViewVeiculos" ItemsSource="{Binding Veiculos}" Margin="15" SelectedItem="{Binding VeiculoSelecionado}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
